@@ -54,7 +54,8 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Job Detail</h1>
         <p class="lead text-muted">{{ job.summary }}</p>
-        <img src="{% static 'rafe.png' %}" alt="Rafe Stefano" height="300">
+        <!-- <img src="{% static 'rafe.png' %}" alt="Rafe Stefano" height="300"> -->
+        <img src="{{ job.image.url }}" alt="Job Image" height="300">
         <p>
             <a href="{% url 'home'%}" class="btn btn-primary my-2">Back</a>
         </p>
