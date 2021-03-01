@@ -12,6 +12,7 @@ media
 # in your Git repository. Update and uncomment the following line accordingly.
 # <django-project-name>/staticfiles/
 /portfolio-project/static/admin
+bootstrap-5.0.0-beta2-dist
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
