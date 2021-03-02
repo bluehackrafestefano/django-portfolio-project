@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'tu#%iuwr4c4+w68j4oe5--2d(@)@b1fl(!7e_@%tl)w45e*%0d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-env.eba-sf8naanw.us-east-1.elasticbeanstalk.com']
 
 
 # Application definition
@@ -75,16 +77,39 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portfoliodb',
-        'USER': 'postgres',
-        'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '5432',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         # 'NAME': 'portfoliodb',
+#         'NAME': os.environ['RDS_DB_NAME'],
+#         # 'USER': 'postgres',
+#         'USER': os.environ['RDS_USERNAME'],
+#         # 'PASSWORD': '123',
+#         'PASSWORD': os.environ['RDS_PASSWORD'],
+#         # 'HOST': 'localhost',
+#         'HOST': os.environ['RDS_HOSTNAME'],
+#         # 'PORT': '5432',
+#         'PORT': os.environ['RDS_PORT'],
+#     }
+# }
+
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': 'NAME': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    } 
 
 
 # Password validation

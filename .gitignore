@@ -116,6 +116,7 @@ celerybeat.pid
 
 # Environments
 Ex_Files_Building_Personal_Portfolio_Django
+eb-env
 .env
 .venv
 env/
@@ -149,3 +150,7 @@ dmypy.json
 
 # profiling data
 .prof
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
